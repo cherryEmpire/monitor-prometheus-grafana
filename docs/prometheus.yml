@@ -1,0 +1,20 @@
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  # - job_name: 'prometheus'
+
+  # metrics_path defaults to '/metrics'
+  # scheme defaults to 'http'.
+
+  # static_configs:
+  # - targets: ['localhost:9090']
+  - job_name: 'monitor-demo'
+    scrape_interval: 5s # 刮取的时间间隔
+    scrape_timeout: 5s
+    metrics_path: /admin/prometheus
+    scheme: http
+    basic_auth: #认证信息
+      username: admin
+      password: 1234
+    static_configs:
+      - targets:
+          - 127.0.0.1:8888  #此处填写 Spring Boot 应用的 IP + 端口号
