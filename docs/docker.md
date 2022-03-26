@@ -46,7 +46,7 @@ docker run --name prome1 -p 9090:9090 -v /root/apps/prometheus/prometheus.yml:/e
 ```text
 http://192.168.1.16:9090/targets
 ```
-![img_1.png](img_1.png)
+![img_1.png](./img_1.png)
 
 # Grafana
 ```text
@@ -61,5 +61,5 @@ admin/admin
 http://192.168.1.16:3000/
 ```
 
-![img.png](img.png)
+![img.png](./img.png)
 
