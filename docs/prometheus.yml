@@ -1,13 +1,20 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 1m
+  external_labels:
+    monitor: codelab-monitor
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  # - job_name: 'prometheus'
-
-  # metrics_path defaults to '/metrics'
-  # scheme defaults to 'http'.
-
-  # static_configs:
-  # - targets: ['localhost:9090']
-  - job_name: 'monitor-demo'
+  - job_name: prometheus
+    honor_timestamps: true
+    scrape_interval: 5s
+    scrape_timeout: 5s
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets:
+          - localhost:9090
+  - job_name: monitor-demo
     scrape_interval: 5s # 刮取的时间间隔
     scrape_timeout: 5s
     metrics_path: /admin/prometheus
@@ -17,4 +24,4 @@ scrape_configs:
       password: 1234
     static_configs:
       - targets:
-          - 127.0.0.1:8888  #此处填写 Spring Boot 应用的 IP + 端口号
+          - 192.168.1.6:8888 # springboot服务地址
